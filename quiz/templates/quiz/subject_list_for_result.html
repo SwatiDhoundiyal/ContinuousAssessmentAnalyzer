@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - {{ tch.Name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'quiz/background.css' %}">
+</head>
+<body>
+    {% include "quiz/navbar.html" %}
+    <div class = "container">
+        <div class = "">
+            <br><br><br>
+            <h1 class="text-center p-3 mb-2 bg-secondary text-white">{{ tch.Name }}</h1><br><br>
+            <ol>
+            <table class="table table-striped table-bordered">
+                <thead class="bg-info">
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>School</th>
+                        <th>Course</th>
+                        <th>Branch</th>
+                        <th>Year</th>
+                        <th>Section</th>
+                    </tr>
+                </thead>
+                
+                {% for s in sub %}
+                    <tr>
+                        <td>{{ s.code }}</td>
+                        <td><a href="{% url 'resultquizlist' s.id %}">{{ s.Name }}</a></td>
+                        <td>{{ s.school }}</td>
+                        <td>{{ s.course }}</td>
+                        <td>{{ s.branch }}</td>
+                        <td>{{ s.year }}</td>
+                        <td>{{ s.section }}</td>
+                    </tr>
+                {% endfor %}
+                
+            </table>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
